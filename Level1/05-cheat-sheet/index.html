@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Linux Cheat Sheet</title>
+  <style>
+    /* === Cheat Sheet de comandos Linux — estética terminal === */
+
+    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@500;700&display=swap');
+
+    :root {
+      --bg:        #0d1117;
+      --panel:     #161b22;
+      --border:    #21262d;
+      --green:     #3fb950;
+      --green-dim: #2ea043;
+      --amber:     #d29922;
+      --text:      #c9d1d9;
+      --muted:     #8b949e;
+      --cmd:       #58a6ff;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      /* leve textura de scanlines típica de terminal */
+      background-image: repeating-linear-gradient(
+        0deg, transparent, transparent 2px,
+        rgba(63,185,80,0.02) 2px, rgba(63,185,80,0.02) 4px
+      );
+      color: var(--text);
+      font-family: 'JetBrains Mono', monospace;
+      line-height: 1.6;
+      padding: 2rem 1rem 4rem;
+    }
+
+    .wrap { max-width: 1100px; margin: 0 auto; }
+
+    /* Cabeçalho estilo prompt de terminal */
+    header {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--panel);
+      padding: 1.5rem 1.75rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 0 40px rgba(63,185,80,0.05);
+    }
+    .dots { display: flex; gap: 8px; margin-bottom: 1rem; }
+    .dots span { width: 12px; height: 12px; border-radius: 50%; }
+    .dots span:nth-child(1){ background:#ff5f56; }
+    .dots span:nth-child(2){ background:#ffbd2e; }
+    .dots span:nth-child(3){ background:#27c93f; }
+
+    h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.8rem;
+      color: var(--text);
+    }
+    h1::before { content: '$ '; color: var(--green); }
+    .subtitle { color: var(--muted); font-size: 0.9rem; margin-top: 0.25rem; }
+    .subtitle::before { content: '# '; color: var(--amber); }
+
+    /* Grid de cartões por categoria */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--panel);
+      overflow: hidden;
+      transition: border-color .2s, transform .2s;
+    }
+    .card:hover { border-color: var(--green-dim); transform: translateY(-2px); }
+
+    .card h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1rem;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      color: var(--green);
+      padding: .9rem 1.1rem;
+      border-bottom: 1px solid var(--border);
+      background: rgba(63,185,80,0.04);
+    }
+
+    .card ul { list-style: none; padding: .5rem 0; }
+    .card li {
+      display: flex;
+      gap: .75rem;
+      padding: .45rem 1.1rem;
+      align-items: baseline;
+    }
+    .card li:hover { background: rgba(88,166,255,0.06); }
+
+    code {
+      color: var(--cmd);
+      font-weight: 700;
+      white-space: nowrap;
+      flex-shrink: 0;
+      min-width: 130px;
+    }
+    .desc { color: var(--muted); font-size: .86rem; }
+
+    footer {
+      margin-top: 2.5rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: .8rem;
+    }
+    footer .blink {
+      color: var(--green);
+      animation: blink 1.1s steps(1) infinite;
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="dots"><span></span><span></span><span></span></div>
+      <h1>linux-cheat-sheet</h1>
+      <p class="subtitle">comandos favoritos para consulta rápida</p>
+    </header>
+
+    <div class="grid">
+
+      <div class="card">
+        <h2>Navegação</h2>
+        <ul>
+          <li><code>pwd</code><span class="desc">mostra o diretório atual</span></li>
+          <li><code>cd -</code><span class="desc">volta ao diretório anterior</span></li>
+          <li><code>ls -lah</code><span class="desc">lista detalhada com tamanhos legíveis</span></li>
+          <li><code>tree</code><span class="desc">árvore de diretórios</span></li>
+          <li><code>find . -name "*.sh"</code><span class="desc">busca arquivos por padrão</span></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>Arquivos</h2>
+        <ul>
+          <li><code>cp -r a b</code><span class="desc">copia recursivamente</span></li>
+          <li><code>mv a b</code><span class="desc">move ou renomeia</span></li>
+          <li><code>rm -rf dir</code><span class="desc">remove pasta (cuidado!)</span></li>
+          <li><code>cat arq</code><span class="desc">mostra o conteúdo</span></li>
+          <li><code>less arq</code><span class="desc">visualiza paginado</span></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>Permissões</h2>
+        <ul>
+          <li><code>chmod +x s.sh</code><span class="desc">torna executável</span></li>
+          <li><code>chmod 644 arq</code><span class="desc">rw para dono, r para o resto</span></li>
+          <li><code>chown user arq</code><span class="desc">muda o dono</span></li>
+          <li><code>stat arq</code><span class="desc">detalhes do arquivo</span></li>
+          <li><code>umask</code><span class="desc">máscara de permissões padrão</span></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>Processos</h2>
+        <ul>
+          <li><code>htop</code><span class="desc">monitor interativo</span></li>
+          <li><code>ps aux</code><span class="desc">lista todos os processos</span></li>
+          <li><code>kill -9 PID</code><span class="desc">força encerramento</span></li>
+          <li><code>jobs</code><span class="desc">tarefas em background</span></li>
+          <li><code>nohup cmd &</code><span class="desc">roda imune ao logout</span></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>Sistema</h2>
+        <ul>
+          <li><code>df -h</code><span class="desc">uso de disco</span></li>
+          <li><code>free -h</code><span class="desc">uso de memória</span></li>
+          <li><code>uname -a</code><span class="desc">info do kernel/SO</span></li>
+          <li><code>uptime</code><span class="desc">tempo ligado e carga</span></li>
+          <li><code>journalctl -xe</code><span class="desc">logs do sistema</span></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>Pacotes (apt)</h2>
+        <ul>
+          <li><code>apt update</code><span class="desc">atualiza a lista</span></li>
+          <li><code>apt upgrade</code><span class="desc">aplica atualizações</span></li>
+          <li><code>apt install x</code><span class="desc">instala pacote</span></li>
+          <li><code>apt search x</code><span class="desc">busca pacote</span></li>
+          <li><code>apt autoremove</code><span class="desc">remove órfãos</span></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>Rede</h2>
+        <ul>
+          <li><code>ip a</code><span class="desc">interfaces e IPs</span></li>
+          <li><code>ss -tulanp</code><span class="desc">portas em uso</span></li>
+          <li><code>ping host</code><span class="desc">testa conectividade</span></li>
+          <li><code>curl -I url</code><span class="desc">cabeçalhos HTTP</span></li>
+          <li><code>ssh user@host</code><span class="desc">conexão remota</span></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>Git</h2>
+        <ul>
+          <li><code>git status</code><span class="desc">estado do repo</span></li>
+          <li><code>git add .</code><span class="desc">adiciona tudo ao stage</span></li>
+          <li><code>git commit -m</code><span class="desc">commit com mensagem</span></li>
+          <li><code>git push</code><span class="desc">envia commits</span></li>
+          <li><code>git log --oneline</code><span class="desc">histórico resumido</span></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <footer>
+      <p>linux-ai-workshop · Level 1 / projeto 05 <span class="blink">█</span></p>
+    </footer>
+  </div>
+</body>
+</html>
