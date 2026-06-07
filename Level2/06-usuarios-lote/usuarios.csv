@@ -1,0 +1,5 @@
+usuario,grupo,shell,comentario
+ana.silva,dev,/bin/bash,Ana Silva - Backend
+bruno.costa,dev,/bin/bash,Bruno Costa - Frontend
+carla.dias,qa,/bin/bash,Carla Dias - QA
+diego.melo,infra,/bin/bash,Diego Melo - DevOps
