@@ -8,11 +8,11 @@ Montagem de um servidor web completo (Apache, MySQL, PHP), aplicação CRUD, e e
 
 | # | Projeto | Descrição | Conceitos | Status |
 |---|---------|-----------|-----------|:------:|
-| 11 | **Instalação automatizada do LAMP** | Script idempotente que instala e configura Apache, MySQL e PHP, valida serviços e cria página de teste. | script idempotente, Apache/MySQL/PHP | ⬜ |
-| 12 | **App PHP+MySQL (CRUD)** | Pequeno sistema CRUD (lista de tarefas) rodando no LAMP, com virtual hosts no Apache. | virtual hosts, CRUD | ⬜ |
-| 13 | **Scanner de rede local** | Descobre dispositivos na rede e portas abertas. | `ip`, `ping`, `nmap` | ⬜ |
-| 14 | **Configurador de firewall (UFW)** | Script interativo com regras para diferentes perfis (web, dev, fechado). | UFW, perfis de regras | ⬜ |
-| 15 | **Monitor de uptime de serviços** | Verifica se Apache/MySQL estão de pé e envia alerta se caírem, via cron. | checagem + alerta, cron | ⬜ |
+| 11 | **Instalação automatizada do LAMP** | Script idempotente que instala e configura Apache, MySQL e PHP, valida serviços e cria página de teste. | script idempotente, Apache/MySQL/PHP | ✅ |
+| 12 | **App PHP+MySQL (CRUD)** | Pequeno sistema CRUD (lista de tarefas) rodando no LAMP, com virtual hosts no Apache. | virtual hosts, CRUD | ✅ |
+| 13 | **Scanner de rede local** | Descobre dispositivos na rede e portas abertas. | `ip`, `ping`, `nmap` | ✅ |
+| 14 | **Configurador de firewall (UFW)** | Script interativo com regras para diferentes perfis (web, dev, fechado). | UFW, perfis de regras | ✅ |
+| 15 | **Monitor de uptime de serviços** | Verifica se Apache/MySQL estão de pé e envia alerta se caírem, via cron. | checagem + alerta, cron | ✅ |
 
 > Legenda: ⬜ a fazer · 🟨 em andamento · ✅ concluído
 
