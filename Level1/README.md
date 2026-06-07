@@ -8,11 +8,11 @@ Primeiros passos com a VM Ubuntu: criação e execução de scripts, edição de
 
 | # | Projeto | Descrição | Conceitos | Status |
 |---|---------|-----------|-----------|:------:|
-| 01 | **Setup inicial automatizado** | Script `setup.sh` que configura a VM recém-instalada (timezone, locale, pacotes essenciais via `apt`). | `setup.sh`, `apt`, `chmod +x`, execução | ⬜ |
-| 02 | **Gerador de aliases inteligente** | Conjunto de aliases úteis no `.bashrc`, com comentários explicando cada um. | `.bashrc`, edição Vim/Nano | ⬜ |
-| 03 | **Organizador de diretórios** | Script que organiza arquivos por extensão em pastas. | permissões, `ls -la` | ⬜ |
-| 04 | **Backup simples com cron** | Script de backup (`tar`/`rsync`) de uma pasta, agendado via crontab. | `tar`/`rsync`, `crontab -e` | ⬜ |
-| 05 | **Cheat sheet pessoal** | Página HTML com comandos Linux favoritos, servida localmente. | HTML, `python3 -m http.server` | ⬜ |
+| 01 | **Setup inicial automatizado** | Script `setup.sh` que configura a VM recém-instalada (timezone, locale, pacotes essenciais via `apt`). | `setup.sh`, `apt`, `chmod +x`, execução | ✅ |
+| 02 | **Gerador de aliases inteligente** | Conjunto de aliases úteis no `.bashrc`, com comentários explicando cada um. | `.bashrc`, edição Vim/Nano | ✅ |
+| 03 | **Organizador de diretórios** | Script que organiza arquivos por extensão em pastas. | permissões, `ls -la` | ✅ |
+| 04 | **Backup simples com cron** | Script de backup (`tar`/`rsync`) de uma pasta, agendado via crontab. | `tar`/`rsync`, `crontab -e` | ✅ |
+| 05 | **Cheat sheet pessoal** | Página HTML com comandos Linux favoritos, servida localmente. | HTML, `python3 -m http.server` | ✅ |
 
 > Legenda: ⬜ a fazer · 🟨 em andamento · ✅ concluído
 
